@@ -1,0 +1,23 @@
+.outer-container {
+    position: relative;
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar-left {
+    flex: 0 0 200px;
+    overflow-y: scroll;
+}
+
+.main {
+    flex: 1;
+    overflow: hidden;
+}
+
+#myEditor {
+    width: 100%; 
+    margin-top: 40px; 
+}
