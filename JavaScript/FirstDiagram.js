@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // create a DiagramView component that wraps the "diagram" canvas
     var diagramView = MindFusion.Diagramming.DiagramView.create(document.getElementById("diagram"));
     diagram = diagramView.diagram;
-    diagram.backBrush = '#e6f2ff'; 
+    diagram.backBrush = '#fff'; 
 
     var shapeIds = ["Save", "Input", "Rectangle", "ManualOperation", "Decision2", "Decision", "BeginLoop", "EndLoop", "DOutDelay", "Ellipse"]
     var namesNodes = ["Datos", "Entrada Manual", "Proceso", "Operación Manual", "Preparación", "Decisión", "Inicio de Ciclo", "Fin de Ciclo", "Terminador", "Conector"]
@@ -30,11 +30,15 @@ document.addEventListener("DOMContentLoaded", function() {
     nodeList.defaultNodeSize = new Size(24, 24);
 
     // Lista de figuras utilizables por el usuario
-    for(var i = 0; i < shapeIds.length; i++) {
+    for (var i = 0; i < shapeIds.length; i++) {
         var sNode = new ShapeNode();
         sNode.shape = shapeIds[i];
-        sNode.text = namesNodes[i]; // asigna el texto aquí
+        sNode.text = ''; // asigna una cadena vacía aquí
         sNode.brush = "#b3d9ff";
+        
+        // Agrega propiedades personalizadas:
+        sNode.tag = { type: namesNodes[i], originalText: '' };
+        
         nodeList.addNode(sNode, namesNodes[i]);
     }
 
@@ -52,20 +56,28 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             // ... resto del código ...
         }
+        return inputText;
     }
 
     // Capture el evento doubleClick en un nodo
-    diagram.addEventListener(MindFusion.Diagramming.Events.nodeClicked, function(sender, args) {
+    diagram.addEventListener(MindFusion.Diagramming.Events.nodeDoubleClicked, function(sender, args) {
         var node = args.node;
-        var originalNodeText = node.text; // Conserva el texto original
-        var newText = prompt("Por favor, introduce el nuevo texto para el nodo:", node.text);
+        
+        // Obtiene los metadatos
+        var type = node.tag.type;
+        var originalText = node.tag.originalText;
+        
+        var newText = prompt("Por favor, introduce el nuevo texto para el nodo:", originalText);
         if (newText !== null && newText !== "") {
-            //node.text = newText;
-            node.text = formatTextBasedOnNode(originalNodeText, newText);
+            // Guarda el texto ingresado como "texto original" en los metadatos
+            node.tag.originalText = newText;
+            
+            // Formatea el texto visual del nodo basándose en los metadatos
+            node.text = formatTextBasedOnNode(type, newText);
+            
             updateGlobalTexts();
         }
     });
 
+    
 });
-
-

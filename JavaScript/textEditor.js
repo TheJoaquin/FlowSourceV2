@@ -8,13 +8,13 @@ var editor = CodeMirror.fromTextArea(document.getElementById("myEditor"), {
 //console.log("Contenido de globalNodeTexts:", window.globalNodeTexts);
 
 
-document.getElementById("populateEditor").addEventListener('click', function() {
-    // Transformar el arreglo globalNodeTexts a un string, por ejemplo separado por saltos de línea
-    var textToInsert = window.globalNodeTexts.join('\n');
+// document.getElementById("populateEditor").addEventListener('click', function() {
+//     // Transformar el arreglo globalNodeTexts a un string, por ejemplo separado por saltos de línea
+//     var textToInsert = window.globalNodeTexts.join('\n');
     
-    // Establecer el contenido del editor CodeMirror con el texto
-    editor.setValue(textToInsert);
-});
+//     // Establecer el contenido del editor CodeMirror con el texto
+//     editor.setValue(textToInsert);
+// });
 
 // Función para ejecutar el código cuando se presiona el botón
 function executeRustCode() {

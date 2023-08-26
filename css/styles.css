@@ -1,0 +1,49 @@
+body{
+    background: #fffcfc;
+}
+/* Estilos NavBar */
+nav{
+    background: #143437;
+}
+
+
+.nav-link{
+    /* background: #E47847; */
+    border-radius: 15px;
+    padding: 10px 20px 10px 20px; 
+}
+
+
+.nav-link:hover{
+    background: #df642b;
+    border-radius: 15px;
+    padding: 10px 20px 10px 20px; 
+}
+
+.containerCSS{
+    background-image: url("../images/bg-body.avif");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    /* Centering text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Estilos seccion 1 */
+h1{
+    font-size: 82px;
+}
+
+.containerBody{
+    /* Centering text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
