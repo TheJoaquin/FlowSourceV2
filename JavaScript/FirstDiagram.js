@@ -3,6 +3,7 @@
 var Diagram = MindFusion.Diagramming.Diagram;
 var ShapeNode = MindFusion.Diagramming.ShapeNode;
 var NodeListView = MindFusion.Diagramming.NodeListView;
+var Behavior = MindFusion.Diagramming.Behavior;
 
 var Rect = MindFusion.Drawing.Rect;
 var Size = MindFusion.Drawing.Size;
@@ -18,9 +19,9 @@ function updateGlobalTexts() {
 
 document.addEventListener("DOMContentLoaded", function() {
     // create a DiagramView component that wraps the "diagram" canvas
-    var diagramView = MindFusion.Diagramming.DiagramView.create(document.getElementById("diagram"));
+    diagramView = MindFusion.Diagramming.DiagramView.create(document.getElementById("diagram"));
     diagram = diagramView.diagram;
-    diagram.backBrush = '#fff'; 
+    diagram.backBrush = '#f3f3f3'; 
 
     var shapeIds = ["Save", "Input", "Rectangle", "ManualOperation", "Decision2", "Decision", "BeginLoop", "EndLoop", "DOutDelay", "Ellipse"]
     var namesNodes = ["Datos", "Entrada Manual", "Proceso", "Operación Manual", "Preparación", "Decisión", "Inicio de Ciclo", "Fin de Ciclo", "Terminador", "Conector"]
@@ -41,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function() {
         
         nodeList.addNode(sNode, namesNodes[i]);
     }
+
+   selectControl = document.getElementById("selectControl");
+   selectControl.addEventListener("change", onSelectChenged);
 
     // Función para formatear el texto basándose en el tipo de nodo
     function formatTextBasedOnNode(nodeName, inputText) {
@@ -81,3 +85,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
 });
+
+function onSelectChenged(){
+    if(selectControl.value == "linkShapes")
+        diagramView.behavior = Behavior.LinkShapes;
+    else if(selectControl.value == "drawContainers")
+        diagramView.behavior = Behavior.DrawContainers;
+    else if(selectControl.value == "drawTables")
+        diagramView.behavior = Behavior.DrawTables;
+    else if(selectControl.value == "modify")
+        diagramView.behavior = Behavior.Modify;
+    else if(selectControl.value == "pan")
+        diagramView.behavior = Behavior.Pan;
+}
+
+var selectControl;
+var diagramView;

@@ -18,51 +18,39 @@
                     <a class="nav-link text-white" href="index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Servicios</a>
+                    <a class="nav-link text-white" href="exercises.html">Ejercicios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-items text-white" href="#">Sobre Nosotros</a>
+                    <a class="nav-link nav-items text-white" href="docs.html">Documentación</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="container bg-light pt-3">
+    <div class="container bg-light pt-3 mt-3">
         <p id="exercise-content" class="text-center text-break fs-5 lh-base">
             <!-- Contenido del ejercicio se generará aquí -->
         </p> 
     </div>
-    <!-- <button id="editButton" class="btn btn-primary">Editar Nodo</button>
-        
-
-    Modal
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="editModalLabel">Editar Texto del Nodo</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <input type="text" id="newText" class="form-control" placeholder="Introduce el nuevo texto">
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" id="confirmButton">Guardar Cambios</button>
-        </div>
-        </div>
-    </div>
-    </div> -->
-
+   
 
     <div class="outer-container">
         <div class="container">
+            
             <div class="sidebar-left">
                 <canvas id="nodeList"></canvas>
             </div>
+            
             <div class="main">
-                <canvas id="diagram"></canvas>
+                <select id="selectControl" class="form-select form-select-sm">
+                    <option value="linkShapes">Linkear figuras</option>
+                    <option value="modify">Modificar</option>
+                    <option value="pan">Arrastrar</option>
+                </select>
+                <!-- <button id="lock" class="btn btn-primary">bloquear/desbloquar</button> -->
+                <div class="topbar">
+                    <canvas id="diagram" width="2100" height="1000"></canvas>
+                    
+                </div>
             </div>
         </div>
         <!-- <div class="container">
